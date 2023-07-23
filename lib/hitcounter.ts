@@ -22,10 +22,9 @@ export class HitCounter extends Construct {
             partitionKey: {
                 name: 'path',
                 type: dynamodb.AttributeType.STRING
-            }
+            },
+            removalPolicy: cdk.RemovalPolicy.DESTROY
         });
-
-        this.table = table
 
         this.handler = new lambda.Function(this, 'HitCounterHandler', {
             runtime: lambda.Runtime.NODEJS_16_X,
